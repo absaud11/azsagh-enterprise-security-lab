@@ -64,6 +64,48 @@ WEB01
    +------> FILES1
             SMB
             Company Files
+## Architecture Diagram
+
+```mermaid
+flowchart TD
+    USER[Internet User]
+    ADMIN[Administrator]
+
+    USER -->|HTTPS 443| WEB01
+
+    subgraph AWS[AWS Environment]
+        WEB01[WEB01<br/>Nginx<br/>Node.js<br/>SQLite]
+
+        DC1[DC1<br/>Active Directory<br/>DNS<br/>Kerberos<br/>LDAP]
+
+        FILES1[FILES1<br/>SMB<br/>Company Files]
+
+        WEB01 -->|Kerberos / LDAP| DC1
+        WEB01 -->|Kerberos / SMB| FILES1
+        FILES1 -->|AD / DNS / Kerberos| DC1
+    end
+
+    ADMIN -->|AWS Systems Manager| WEB01
+    ADMIN -->|AWS Systems Manager| DC1
+    ADMIN -->|AWS Systems Manager| FILES1
+```
+
+### Service Roles
+
+```text
+WEB01
+= Public web/application server
+
+DC1
+= Identity, DNS and authentication server
+
+FILES1
+= Internal company file server
+```
+
+Public web traffic terminates at WEB01.
+
+Identity services and file-sharing services are restricted to authorized internal communication rather than being directly exposed to the public Internet.
 ```
 
 ## Technologies
