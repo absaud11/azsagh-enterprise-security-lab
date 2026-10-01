@@ -1,0 +1,119 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>
+    Employee Login
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+
+</head>
+
+
+<body>
+
+  <header class="nav">
+
+    <div class="brand">
+      AZSAGH Technologies
+    </div>
+
+    <nav>
+
+      <a href="/">
+        Home
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <section class="login-section">
+
+      <div class="login-card">
+
+        <p class="eyebrow">
+          EMPLOYEE ACCESS
+        </p>
+
+        <h1 class="login-title">
+          Sign in
+        </h1>
+
+        <p class="subtitle">
+          Authorized employees only.
+        </p>
+
+
+        <form id="login-form">
+
+          <label for="username">
+            Username
+          </label>
+
+          <input
+            id="username"
+            name="username"
+            type="text"
+            autocomplete="username"
+            required
+          >
+
+
+          <label for="password">
+            Password
+          </label>
+
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          >
+
+
+          <button
+            class="button form-button"
+            type="submit"
+          >
+            Sign in
+          </button>
+
+        </form>
+
+
+        <p
+          id="login-message"
+          class="message"
+        >
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="/login.js"></script>
+
+</body>
+
+</html>

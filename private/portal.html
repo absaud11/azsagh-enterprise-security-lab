@@ -1,0 +1,453 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>
+    Employee Portal
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+
+</head>
+
+
+<body>
+
+  <header class="nav">
+
+    <div class="brand">
+      AZSAGH Employee Portal
+    </div>
+
+    <nav>
+
+      <button
+        id="logout-button"
+        class="link-button"
+      >
+        Logout
+      </button>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <section class="hero portal-hero">
+
+      <p class="eyebrow">
+        AUTHENTICATED SESSION
+      </p>
+
+      <h1>
+        Welcome,
+        <span id="username">
+          Employee
+        </span>
+      </h1>
+
+
+      <p class="subtitle">
+
+        You are now inside the
+        protected employee area.
+
+      </p>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>
+        Employee Services
+      </h2>
+
+
+      <div class="grid">
+
+
+        <article class="card">
+
+          <h3>
+            Company Files
+          </h3>
+
+          <p>
+            Secure internal file
+            services will be connected
+            later through SMB.
+          </p>
+
+        </article>
+
+
+        <article class="card">
+
+          <h3>
+            Identity
+          </h3>
+
+          <p>
+            Enterprise Kerberos
+            authentication will be
+            integrated into our private
+            lab.
+          </p>
+
+        </article>
+
+
+        <article class="card">
+
+          <h3>
+            Notifications
+          </h3>
+
+          <p>
+            Real authenticated
+            WebSocket notifications
+            will appear here later.
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+    <section
+      id="infrastructure-section"
+      class="section"
+    >
+
+      <p class="eyebrow">
+        PRIVATE AWS INFRASTRUCTURE
+      </p>
+
+      <h2>
+        Infrastructure Status
+      </h2>
+
+      <p class="subtitle">
+        Live checks from WEB01 to internal services
+        over the private AWS VPC.
+      </p>
+
+
+      <div class="grid infrastructure-grid">
+
+        <article class="card">
+
+          <h3>
+            WEB01
+          </h3>
+
+          <p class="infra-ip">
+            172.31.64.42
+          </p>
+
+          <div class="service-row">
+            <span>HTTP / Nginx</span>
+            <span id="http-status" class="service-status">
+              CHECKING
+            </span>
+          </div>
+
+          <div class="service-row">
+            <span>HTTPS / Nginx</span>
+            <span id="https-status" class="service-status">
+              CHECKING
+            </span>
+          </div>
+
+          <div class="service-row">
+            <span>Node.js Backend</span>
+            <span id="node-status" class="service-status">
+              CHECKING
+            </span>
+          </div>
+
+          <div class="service-row">
+            <span>Internal Admin</span>
+            <span id="internal-admin-status" class="service-status">
+              CHECKING
+            </span>
+          </div>
+
+        </article>
+
+
+        <article class="card">
+
+          <h3>
+            DC1
+          </h3>
+
+          <p class="infra-ip">
+            172.31.71.55
+          </p>
+
+          <div class="service-row">
+            <span>DNS</span>
+            <span id="dns-status" class="service-status">
+              CHECKING
+            </span>
+          </div>
+
+          <div class="service-row">
+            <span>Kerberos</span>
+            <span id="kerberos-status" class="service-status">
+              CHECKING
+            </span>
+          </div>
+
+          <div class="service-row">
+            <span>LDAP</span>
+            <span id="ldap-status" class="service-status">
+              CHECKING
+            </span>
+          </div>
+
+        </article>
+
+
+        <article class="card">
+
+          <h3>
+            FILES1
+          </h3>
+
+          <p class="infra-ip">
+            172.31.75.24
+          </p>
+
+          <div class="service-row">
+            <span>SMB</span>
+            <span id="smb-status" class="service-status">
+              CHECKING
+            </span>
+          </div>
+
+          <div class="service-row">
+            <span>SSH / SFTP</span>
+            <span id="ssh-sftp-status" class="service-status">
+              CHECKING
+            </span>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section
+      id="security-dashboard"
+      class="section"
+    >
+
+      <div class="security-heading">
+
+        <div>
+          <p class="eyebrow">
+            IDENTITY & SECURITY MONITORING
+          </p>
+
+          <h2>
+            Identity & Kerberos Dashboard
+          </h2>
+
+          <p class="subtitle">
+            Live Active Directory identities,
+            Kerberos sessions and security events.
+          </p>
+        </div>
+
+        <button
+          id="security-refresh"
+          class="security-refresh"
+          type="button"
+        >
+          Refresh
+        </button>
+
+      </div>
+
+
+      <div class="security-summary">
+
+        <article class="card summary-card">
+          <span class="summary-label">
+            DIRECTORY USERS
+          </span>
+
+          <div
+            id="directory-user-count"
+            class="summary-number"
+          >
+            —
+          </div>
+
+          <p>
+            Accounts returned from Active Directory
+          </p>
+        </article>
+
+
+        <article class="card summary-card">
+          <span class="summary-label">
+            KERBEROS SESSIONS
+          </span>
+
+          <div
+            id="kerberos-session-count"
+            class="summary-number"
+          >
+            —
+          </div>
+
+          <p>
+            Kerberos credential caches detected
+          </p>
+        </article>
+
+
+        <article class="card summary-card">
+          <span class="summary-label">
+            SECURITY EVENTS
+          </span>
+
+          <div
+            id="event-count"
+            class="summary-number"
+          >
+            —
+          </div>
+
+          <p>
+            Recent audit records
+          </p>
+        </article>
+
+      </div>
+
+
+      <div class="identity-panels">
+
+        <article class="card security-panel">
+
+          <div class="panel-heading">
+            <div>
+              <h3>
+                Directory Users
+              </h3>
+
+              <p>
+                Real user accounts queried from DC1
+                through LDAP with Kerberos.
+              </p>
+            </div>
+          </div>
+
+          <div
+            id="directory-user-list"
+            class="directory-user-list"
+          >
+            <p class="loading-text">
+              Loading Active Directory users...
+            </p>
+          </div>
+
+        </article>
+
+
+        <article class="card security-panel">
+
+          <div class="panel-heading">
+            <div>
+              <h3>
+                Kerberos Sessions
+              </h3>
+
+              <p>
+                Real Kerberos caches currently
+                available on WEB01.
+              </p>
+            </div>
+          </div>
+
+          <div
+            id="kerberos-session-list"
+            class="kerberos-session-list"
+          >
+            <p class="loading-text">
+              Loading Kerberos sessions...
+            </p>
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <article class="card security-panel security-events-panel">
+
+        <div class="panel-heading">
+          <div>
+            <h3>
+              Recent Security Events
+            </h3>
+
+            <p>
+              Authentication and portal audit activity.
+            </p>
+          </div>
+        </div>
+
+        <div
+          id="audit-list"
+          class="audit-list"
+        >
+          <p class="loading-text">
+            Loading security events...
+          </p>
+        </div>
+
+      </article>
+
+
+      <p
+        id="security-last-updated"
+        class="last-updated"
+      >
+        Waiting for first security check...
+      </p>
+
+    </section>
+
+
+  </main>
+
+
+  <script src="/portal.js"></script>
+
+</body>
+
+</html>
